@@ -36,6 +36,9 @@ Connect to container by running command `docker exec -it php_assignment /bin/bas
 Previous command should take you to path `/app`, but make sure of that by running command `cd /app`.
 
 4. **Run tests:**
+docker-compose-dev.yml - allows to run tests with wiremock
+"docker-compose -f docker-compose-dev.yml up --build"
+change host in env to get mock FICTIONAL_SOCIAL_API_HOST=http://wiremock:8080
 Run the tests with command `./vendor/bin/phpunit`.
 
 ## Notes about the API endpoints

@@ -74,8 +74,9 @@ class StatisticsController extends Controller
         } catch (\Throwable $throwable) {
             http_response_code(500);
 
-            $response = ['message' => 'An error occurred'];
+            $response = ['message' => 'An error occurred'.$throwable->getMessage()];
         }
+
 
         $this->render($response, 'json', false);
     }

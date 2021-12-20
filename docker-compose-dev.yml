@@ -1,0 +1,40 @@
+version: '3.9'
+
+services:
+  sm_assignment:
+    image: php_assignment:latest
+    container_name: php_assignment
+    restart: "no"
+    build:
+      context: ./
+      dockerfile: Dockerfile
+      target: local
+    networks:
+      - sm_assignment
+    ports:
+      - "7777:80"
+
+  wiremock:
+    image: rodolpheche/wiremock
+    command:
+        - "java"
+        - "-cp"
+        - "/var/wiremock/lib/*:/var/wiremock/extensions/*"
+        - "com.github.tomakehurst.wiremock.standalone.WireMockServerRunner"
+        - "--local-response-templating"
+        - "--port=8080"
+        - "--record-mappings"
+        - "--verbose"
+    networks:
+        - sm_assignment
+    volumes:
+      - ./tests/files:/home/wiremock/__files
+      - ./tests/mappings:/home/wiremock/mappings
+    ports:
+        - 60503:8080
+
+networks:
+  sm_assignment:
+    ipam:
+      config:
+        - subnet: 192.209.0.0/16
