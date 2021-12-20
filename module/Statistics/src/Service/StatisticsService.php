@@ -42,11 +42,9 @@ class StatisticsService
         $calculator = $this->factory->create($params);
 
         foreach ($posts as $post) {
-
             if (!$post instanceof SocialPostTo) {
                 continue;
             }
-
             $calculator->accumulateData($post);
         }
 
