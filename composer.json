@@ -17,7 +17,9 @@
         "psr/simple-cache": "3.0.0"
     },
     "require-dev": {
-        "phpunit/phpunit": "9.5.10"
+        "phpunit/phpunit": "9.5.10",
+        "wiremock-php/wiremock-php": "^1.43",
+        "ext-json": "*"
     },
     "autoload": {
         "psr-4": {

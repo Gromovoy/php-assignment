@@ -1,0 +1,22 @@
+{
+  "mappings": [
+    {
+      "name": "Successfully got auth response",
+      "request": {
+        "urlPath": "/assignment/register",
+        "method": "POST"
+      },
+      "response": {
+        "status": 200,
+        "bodyFileName": "auth-token-response.json",
+        "headers": {
+          "Content-Type": "application/json",
+          "Encoding": "UTF-8"
+        },
+        "transformers": [
+          "response-template"
+        ]
+      }
+    }
+  ]
+}
